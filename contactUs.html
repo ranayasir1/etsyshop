@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ETSY ::: Contact & Order Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+
+    body {
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: #121212 !important;
+      color: #f1f1f1 !important;
+    }
+
+    .dark-mode .navbar,
+    .dark-mode .footer,
+    .dark-mode .modal-content {
+      background-color: #1f1f1f !important;
+      color: #f1f1f1 !important;
+    }
+
+    .dark-mode .nav-link,
+    .dark-mode .navbar-brand {
+      color: #f1f1f1 !important;
+    }
+
+    .dark-mode .form-control,
+    .dark-mode .form-select {
+      background-color: #2a2a2a;
+      color: #f1f1f1;
+      border-color: #555;
+    }
+
+    .dark-mode .form-control::placeholder {
+      color: #bbb;
+    }
+
+    .dark-mode .modal-header,
+    .dark-mode .modal-footer {
+      border-color: #333;
+    }
+
+    .dark-mode .bg-warning {
+      background-color: #333 !important;
+      color: #f1f1f1 !important;
+    }
+  </style> 
+</head>
+
+<body class="bg-light">
+
+<!-- Discount bar  -->
+  <section>
+    <div class="discount-bar">
+      <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="6">
+        <div style="display: inline-block; white-space: nowrap; min-width: 100%;">
+          
+          <span class="info-item">
+            <img src="./images/fire.png" alt="fire-icon">
+            Limited Offer discount upto 20%
+          </span>
+
+          <span class="info-item">
+            <img src="./images/email.png" alt="email-icon">
+            etsyshop@gmail.com
+          </span>
+
+          <span class="info-item">
+            <img src="./images/location.png" alt="location-icon">
+            89-A, Small Industries No.3 (EPZ), G.T. Road, Gujranwala, Pakistan.
+          </span>
+        </div>
+      </marquee>
+
+    </div>
+  </section>
+  
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-1" href="./index.html">Etsy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto gap-1 fw-bold">
+        <li class="nav-item"><a class="nav-link" href="./index.html"><img src="./images/home.png" alt="Home" width="30" height="30" class="me-2"/>Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="./Product.html"><img src="./images/product.png" alt="Product" width="30" height="30" class="me-2"/>Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="./contactUs.html"><img src="./images/contact.png" alt="Contact" width="25" height="25" class="me-2"/>Contact</a></li>
+        <li class="nav-item">
+          <a class="nav-link position-relative" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+            <i class="bi bi-cart-fill"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+      <button id="darkToggle" class="btn btn-sm btn-outline-dark ms-3">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="bg-warning text-black text-center p-4">
+  <h1 class="display-2 fw-bold fs-3">Contact & Order</h1>
+</section>
+
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">🛒 Your Cart</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="cartItemsContainer"></div>
+      <div class="modal-footer d-flex justify-content-between">
+        <h6 id="cartTotal">Total: Rs. 0</h6>
+        <div>
+          <button class="btn btn-success">Checkout</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact & Order Form -->
+<div class="container my-5">
+  <div class="row g-4 align-items-stretch">
+    <div class="col-md-5">
+      <div class="contact-form h-100">
+        <h4 class="section-title">Contact Us</h4>
+        <p><strong>Email:</strong> support@etsy.com</p>
+        <p><strong>Phone:</strong> 0092-300-4545310</p>
+        <p><strong>Location:</strong> Lahore, Pakistan</p>
+        <p><strong>Working Hours:</strong> 9am - 6pm</p>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="contact-form">
+        <h4 class="section-title">Place Your Order</h4>
+        <form id="orderForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="product" class="form-label">Product Name</label>
+            <input type="text" id="product" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" id="quantity" class="form-control" required min="1" />
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Shipping Address</label>
+            <textarea id="address" class="form-control" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-50 mx-auto d-block">Submit Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="orderModalLabel">Order Received</h1>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Thank you! Your order has been submitted. We will contact you soon.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+  <footer class="bg-dark text-white pt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h5>About Company</h5>
+          <p>We're dedicated to delivering innovative solutions that empower businesses to thrive in the digital age.</p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">About Us</a></li>
+            <li><a href="#" class="text-white-50">Services</a></li>
+            <li><a href="#" class="text-white-50">Products</a></li>
+            <li><a href="#" class="text-white-50">Blog</a></li>
+            <li><a href="#" class="text-white-50">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5>Support</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Help Center</a></li>
+            <li><a href="#" class="text-white-50">Community</a></li>
+            <li><a href="#" class="text-white-50">Privacy Policy</a></li>
+            <li><a href="#" class="text-white-50">Terms</a></li>
+            <li><a href="#" class="text-white-50">Cookies</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5>Newsletter</h5>
+          <p>Subscribe to our newsletter for updates, news, and exclusive offers.</p>
+        </div>
+      </div>
+      <div class="text-center py-3 border-top border-light mt-4">
+        <small>Copyright &copy; 2025 All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Chat Button -->
+<a href="https://wa.me/923001234567" target="_blank" class="whatsapp-float">
+  <img src="./images/whatsapp.jpg" alt="WhatsApp" />
+</a>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Dark Mode Script -->
+<script>
+  const darkToggle = document.getElementById("darkToggle");
+  darkToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const isDark = document.body.classList.contains("dark-mode");
+    darkToggle.textContent = isDark ? "☀️" : "🌙";
+  });
+</script>
+
+<!-- Order Submission Script -->
+<script>
+  document.getElementById("orderForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const modal = new bootstrap.Modal(document.getElementById("orderModal"));
+    modal.show();
+    setTimeout(() => this.reset(), 1000);
+  });
+</script>
+
+</body>
+</html>
